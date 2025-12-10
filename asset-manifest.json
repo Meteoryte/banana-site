@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/banana-site/static/css/main.6ad8558a.css",
+    "main.js": "/banana-site/static/js/main.e0145896.js",
+    "index.html": "/banana-site/index.html",
+    "main.6ad8558a.css.map": "/banana-site/static/css/main.6ad8558a.css.map",
+    "main.e0145896.js.map": "/banana-site/static/js/main.e0145896.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6ad8558a.css",
+    "static/js/main.e0145896.js"
+  ]
+}
