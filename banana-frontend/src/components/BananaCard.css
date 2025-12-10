@@ -1,0 +1,126 @@
+/* Banana Card Styles */
+.banana-card {
+  padding: var(--space-lg);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.banana-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-banana);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.banana-card:hover::before {
+  opacity: 1;
+}
+
+/* Rarity Glow Effects */
+.banana-card.rarity-legendary {
+  box-shadow: 0 0 20px rgba(245, 213, 71, 0.2);
+}
+
+.banana-card.rarity-legendary:hover {
+  box-shadow: 0 0 40px rgba(245, 213, 71, 0.3);
+}
+
+.banana-card.rarity-rare {
+  box-shadow: 0 0 15px rgba(52, 152, 219, 0.15);
+}
+
+.banana-card.rarity-rare:hover {
+  box-shadow: 0 0 30px rgba(52, 152, 219, 0.25);
+}
+
+/* Card Header */
+.banana-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+}
+
+.banana-emoji {
+  font-size: 2rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Card Content */
+.banana-card-content {
+  margin-bottom: var(--space-lg);
+}
+
+.banana-name {
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  margin-bottom: var(--space-sm);
+}
+
+.banana-origin {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: var(--space-md);
+}
+
+.banana-origin .label {
+  color: var(--text-secondary);
+}
+
+.banana-story {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Card Footer */
+.banana-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.banana-tags {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.tag {
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--dark-elevated);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: capitalize;
+}
+
+.tag-taste {
+  background: rgba(155, 89, 182, 0.2);
+  color: var(--mystic-purple);
+}
+
+.tag-color {
+  background: rgba(46, 204, 113, 0.2);
+  color: var(--tropical-green);
+}
+
+.read-more-btn {
+  background: transparent;
+  border: none;
+  color: var(--banana-yellow);
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: transform var(--transition-fast);
+}
+
+.read-more-btn:hover {
+  transform: translateX(5px);
+}

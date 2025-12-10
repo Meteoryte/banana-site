@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Environment files (keep secrets out of git)
+.env
+.env.local
+.env.production
+*.env
+
+# Build outputs
+banana-frontend/build/
+dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test coverage
+coverage/
+
+# Temporary files
+*.tmp
+*.temp

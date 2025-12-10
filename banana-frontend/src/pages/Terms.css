@@ -1,0 +1,137 @@
+/* Terms Page Styles */
+.terms-page {
+  padding: var(--space-2xl) 0;
+}
+
+.terms-header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.terms-header h1 {
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.terms-meta {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.terms-loading {
+  text-align: center;
+  padding: var(--space-3xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+/* Layout */
+.terms-layout {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .terms-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Navigation */
+.terms-nav {
+  position: sticky;
+  top: 100px;
+  padding: var(--space-lg);
+}
+
+@media (max-width: 900px) {
+  .terms-nav {
+    position: static;
+  }
+}
+
+.terms-nav h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: var(--space-md);
+}
+
+.terms-nav ul {
+  list-style: none;
+}
+
+.terms-nav li {
+  margin-bottom: var(--space-xs);
+}
+
+.terms-nav a {
+  display: block;
+  padding: var(--space-sm) var(--space-md);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.terms-nav a:hover {
+  background: rgba(245, 213, 71, 0.1);
+  color: var(--banana-yellow);
+}
+
+.terms-nav a.active {
+  background: rgba(245, 213, 71, 0.2);
+  color: var(--banana-yellow);
+  font-weight: 500;
+}
+
+/* Content */
+.terms-content {
+  padding: var(--space-2xl);
+}
+
+.terms-summary {
+  background: rgba(245, 213, 71, 0.05);
+  border: 1px solid rgba(245, 213, 71, 0.2);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-2xl);
+}
+
+.terms-summary h3 {
+  color: var(--banana-yellow);
+  font-size: 1rem;
+  margin-bottom: var(--space-sm);
+}
+
+.terms-summary p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.terms-section {
+  margin-bottom: var(--space-2xl);
+  padding-top: var(--space-lg);
+  scroll-margin-top: 100px;
+}
+
+.terms-section:last-child {
+  margin-bottom: 0;
+}
+
+.terms-section h2 {
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--dark-border);
+}
+
+.terms-section p {
+  line-height: 1.8;
+}

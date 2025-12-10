@@ -1,0 +1,173 @@
+/* Login Page Styles */
+.login-page {
+  min-height: calc(100vh - 160px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl);
+}
+
+.login-container {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+}
+
+.login-card {
+  padding: var(--space-2xl);
+  text-align: center;
+}
+
+.login-header {
+  margin-bottom: var(--space-2xl);
+}
+
+.login-icon {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: var(--space-lg);
+  animation: float 3s ease-in-out infinite;
+}
+
+.login-header h1 {
+  color: var(--text-primary);
+  font-size: 2rem;
+  margin-bottom: var(--space-sm);
+}
+
+.login-header p {
+  color: var(--text-muted);
+  margin: 0 auto;
+}
+
+/* Error Message */
+.login-error {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background: rgba(231, 76, 60, 0.1);
+  border: 1px solid rgba(231, 76, 60, 0.3);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-xl);
+}
+
+.login-error span {
+  font-size: 1.25rem;
+}
+
+.login-error p {
+  color: var(--coral-red);
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Login Buttons */
+.login-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.login-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  width: 100%;
+  padding: var(--space-md) var(--space-xl);
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.google-btn {
+  background: white;
+  color: #333;
+}
+
+.google-btn:hover {
+  background: #f5f5f5;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.github-btn {
+  background: #24292e;
+  color: white;
+}
+
+.github-btn:hover {
+  background: #1a1e22;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Divider */
+.login-divider {
+  display: flex;
+  align-items: center;
+  margin: var(--space-xl) 0;
+}
+
+.login-divider::before,
+.login-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--dark-border);
+}
+
+.login-divider span {
+  padding: 0 var(--space-md);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* Footer */
+.login-footer {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.login-footer p {
+  margin: 0 0 var(--space-xs);
+}
+
+.login-footer a {
+  color: var(--banana-yellow);
+}
+
+/* Decoration */
+.login-decoration {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.login-decoration .floating-banana {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.15;
+  animation: float 4s ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+.login-decoration .floating-banana:nth-child(1) {
+  top: -10%;
+  left: 10%;
+}
+
+.login-decoration .floating-banana:nth-child(2) {
+  top: 50%;
+  right: -5%;
+}
+
+.login-decoration .floating-banana:nth-child(3) {
+  bottom: -10%;
+  left: 20%;
+}

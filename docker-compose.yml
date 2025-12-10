@@ -1,0 +1,73 @@
+# 🍌 The Invention of the Banana - Docker Compose
+# Run with: docker-compose up -d
+
+version: '3.8'
+
+services:
+  # Backend API
+  backend:
+    build: 
+      context: ./banana-backend
+      dockerfile: Dockerfile
+    container_name: banana-backend
+    restart: unless-stopped
+    ports:
+      - "${BACKEND_PORT:-4000}:4000"
+    environment:
+      - MONGO_URI=${MONGO_URI}
+      - JWT_SECRET=${JWT_SECRET:-banana-super-secret-jwt-key}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - NODE_ENV=production
+      - PORT=4000
+      - FRONTEND_URL=http://localhost:${FRONTEND_PORT:-3000}
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+      - GITHUB_CLIENT_ID=${GITHUB_CLIENT_ID}
+      - GITHUB_CLIENT_SECRET=${GITHUB_CLIENT_SECRET}
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:4000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - banana-network
+
+  # Frontend (Nginx serving static build)
+  frontend:
+    build:
+      context: ./banana-frontend
+      dockerfile: Dockerfile
+    container_name: banana-frontend
+    restart: unless-stopped
+    ports:
+      - "${FRONTEND_PORT:-3000}:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - banana-network
+
+  # MongoDB (Optional - for local development)
+  # Uncomment if you want to run MongoDB locally instead of Atlas
+  # mongodb:
+  #   image: mongo:7
+  #   container_name: banana-mongodb
+  #   restart: unless-stopped
+  #   ports:
+  #     - "27017:27017"
+  #   environment:
+  #     - MONGO_INITDB_ROOT_USERNAME=banana
+  #     - MONGO_INITDB_ROOT_PASSWORD=banana123
+  #     - MONGO_INITDB_DATABASE=banana-production
+  #   volumes:
+  #     - mongodb_data:/data/db
+  #   networks:
+  #     - banana-network
+
+networks:
+  banana-network:
+    driver: bridge
+
+# volumes:
+#   mongodb_data:

@@ -1,0 +1,261 @@
+/* Explorer Page Styles */
+.explorer-page {
+  padding: var(--space-2xl) 0;
+}
+
+.explorer-header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.explorer-header h1 {
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.explorer-header p {
+  color: var(--text-muted);
+  margin: 0 auto;
+}
+
+/* Filters */
+.explorer-filters {
+  display: flex;
+  gap: var(--space-lg);
+  align-items: flex-end;
+  padding: var(--space-lg);
+  margin-bottom: var(--space-2xl);
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.filter-group label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.filter-group select {
+  padding: var(--space-sm) var(--space-md);
+  background: var(--dark-elevated);
+  border: 1px solid var(--dark-border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  min-width: 150px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filter-group select:hover {
+  border-color: var(--banana-yellow);
+}
+
+.filter-group select:focus {
+  outline: none;
+  border-color: var(--banana-yellow);
+  box-shadow: 0 0 0 2px rgba(245, 213, 71, 0.2);
+}
+
+/* Banana Grid */
+.banana-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-xl);
+}
+
+/* Loading, Error, Empty States */
+.explorer-loading,
+.explorer-error,
+.explorer-empty {
+  text-align: center;
+  padding: var(--space-3xl);
+}
+
+.explorer-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.explorer-error span,
+.explorer-empty span {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: var(--space-lg);
+}
+
+.explorer-error code {
+  display: block;
+  margin-top: var(--space-md);
+  padding: var(--space-md);
+  background: var(--dark-elevated);
+  border-radius: var(--radius-md);
+  font-family: monospace;
+}
+
+/* Pagination */
+.pagination-info {
+  text-align: center;
+  color: var(--text-muted);
+  margin-top: var(--space-2xl);
+  font-size: 0.9rem;
+}
+
+/* Banana Modal */
+.banana-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+  z-index: var(--z-modal);
+  overflow-y: auto;
+}
+
+.banana-modal {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: var(--space-2xl);
+}
+
+.modal-close {
+  position: absolute;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: var(--dark-elevated);
+  color: var(--text-secondary);
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.modal-close:hover {
+  background: var(--coral-red);
+  color: white;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+  padding-right: 50px;
+}
+
+.modal-emoji {
+  font-size: 4rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.modal-header h2 {
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.modal-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.meta-item {
+  background: var(--dark-elevated);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.meta-label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-xs);
+}
+
+.meta-value {
+  display: block;
+  color: var(--text-primary);
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.modal-section {
+  margin-bottom: var(--space-xl);
+}
+
+.modal-section:last-child {
+  margin-bottom: 0;
+}
+
+.modal-section h3 {
+  color: var(--banana-yellow);
+  font-size: 1.1rem;
+  margin-bottom: var(--space-md);
+}
+
+.modal-section p {
+  line-height: 1.8;
+}
+
+.modal-section.fun-fact {
+  background: rgba(245, 213, 71, 0.05);
+  border: 1px solid rgba(245, 213, 71, 0.2);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+
+.nutrition-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+}
+
+@media (max-width: 576px) {
+  .nutrition-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.nutrition-item {
+  text-align: center;
+  padding: var(--space-md);
+  background: var(--dark-elevated);
+  border-radius: var(--radius-md);
+}
+
+.nutrition-value {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--banana-yellow);
+  margin-bottom: var(--space-xs);
+}
+
+.nutrition-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
