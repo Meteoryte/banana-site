@@ -1,15 +1,22 @@
 const express = require('express');
 const router = express.Router();
+const fs = require('fs');
 const OpenAI = require('openai');
 const { isAuthenticated, requireTermsAccepted } = require('../middleware/auth');
 const User = require('../models/User');
 
+// Get API key from Render Secret File or environment variable
+let apiKey = process.env.OPENAI_API_KEY;
+const secretPath = '/etc/secrets/openai_api_key';
+if (fs.existsSync(secretPath)) {
+  apiKey = fs.readFileSync(secretPath, 'utf8').trim();
+  console.log('🔮 OpenAI key loaded from secret file');
+}
+
 // Initialize OpenAI client only if API key is available
 let openai = null;
-if (process.env.OPENAI_API_KEY && process.env.OPENAI_API_KEY !== 'placeholder-openai-key') {
-  openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY
-  });
+if (apiKey && apiKey !== 'placeholder-openai-key') {
+  openai = new OpenAI({ apiKey });
   console.log('🔮 OpenAI client initialized');
 } else {
   console.warn('⚠️  OPENAI_API_KEY not set - Oracle will be disabled');

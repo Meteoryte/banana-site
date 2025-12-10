@@ -1,4 +1,7 @@
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000/api';
+// Use Render backend in production, localhost in development
+const API_URL = process.env.NODE_ENV === 'production' 
+  ? 'https://banana-site.onrender.com/api'
+  : (process.env.REACT_APP_API_URL || 'http://localhost:4000/api');
 
 class ApiService {
   constructor() {
