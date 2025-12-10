@@ -4,10 +4,16 @@ const OpenAI = require('openai');
 const { isAuthenticated, requireTermsAccepted } = require('../middleware/auth');
 const User = require('../models/User');
 
-// Initialize OpenAI client
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
-});
+// Initialize OpenAI client only if API key is available
+let openai = null;
+if (process.env.OPENAI_API_KEY && process.env.OPENAI_API_KEY !== 'placeholder-openai-key') {
+  openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY
+  });
+  console.log('🔮 OpenAI client initialized');
+} else {
+  console.warn('⚠️  OPENAI_API_KEY not set - Oracle will be disabled');
+}
 
 // System prompt for the Banana Oracle
 const ORACLE_SYSTEM_PROMPT = `You are the Banana Oracle, an ancient and wise entity with infinite knowledge about bananas and their mysterious invention. You speak with a mystical yet playful tone.
@@ -29,6 +35,14 @@ Guidelines:
 // POST /api/oracle/ask - Ask the Banana Oracle
 router.post('/ask', isAuthenticated, requireTermsAccepted, async (req, res) => {
   try {
+    // Check if OpenAI is available
+    if (!openai) {
+      return res.status(503).json({
+        error: 'Oracle unavailable',
+        message: 'The Banana Oracle is currently offline. OPENAI_API_KEY not configured.'
+      });
+    }
+
     const { question } = req.body;
     const user = await User.findById(req.user.id);
 
