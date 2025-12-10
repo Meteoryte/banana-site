@@ -13,9 +13,22 @@ const getSecret = (envVar, filename) => {
   return process.env[envVar];
 };
 
-// Get OAuth credentials from secrets or env vars
-const githubClientId = getSecret('GITHUB_CLIENT_ID', 'github_client_id');
-const githubClientSecret = getSecret('GITHUB_CLIENT_SECRET', 'github_client_secret');
+// Get GitHub credentials from combined secret file "Ov" or individual env vars
+let githubClientId = process.env.GITHUB_CLIENT_ID;
+let githubClientSecret = process.env.GITHUB_CLIENT_SECRET;
+
+const githubSecretPath = '/etc/secrets/Ov';
+if (fs.existsSync(githubSecretPath)) {
+  const content = fs.readFileSync(githubSecretPath, 'utf8').trim();
+  const parts = content.split(/[\s\n]+/); // Split by space or newline
+  if (parts.length >= 2) {
+    githubClientId = parts[0];
+    githubClientSecret = parts[1];
+    console.log('🔐 GitHub credentials loaded from secret file');
+  }
+}
+
+// Get Google credentials from secrets or env vars
 const googleClientId = getSecret('GOOGLE_CLIENT_ID', 'google_client_id');
 const googleClientSecret = getSecret('GOOGLE_CLIENT_SECRET', 'google_client_secret');
 
