@@ -5,12 +5,11 @@ FROM node:20-alpine
 WORKDIR /app
 
 # Install dependencies first (for Docker layer caching)
-# When built from repo root, paths need to include banana-backend/
-COPY banana-backend/package*.json ./
+COPY package*.json ./
 RUN npm ci --only=production
 
 # Copy source code
-COPY banana-backend/src/ ./src/
+COPY src/ ./src/
 
 # Expose port
 EXPOSE 4000
@@ -21,4 +20,5 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
 
 # Start the server
 CMD ["node", "src/index.js"]
+
 
